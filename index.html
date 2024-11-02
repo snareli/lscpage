@@ -70,22 +70,33 @@
         .carousel {
             position: relative;
             max-width: 800px;
+            height: 400px;
             margin: 2rem auto;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
         }
 
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
+            height: 100%;
         }
 
         .carousel-item {
             min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .carousel-item img {
-            width: 100%;
-            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         .carousel-control {
@@ -761,57 +772,6 @@
                 width: 100%;
             }
         }
-
-        /* 更新照片轮播部分 */
-        .section {
-            <h2 class="section-title">个人照片</h2>
-            <div class="section-content">
-                <div class="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item">
-                            <img src="https://picsum.photos/800/400" alt="测试图片">
-                        </div>
-                        <!-- 如果有更多照片，可以继续添加 -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        }
-
-        /* 添加对应的样式 */
-        <style>
-            .carousel {
-                width: 100%;
-                max-width: 800px;
-                margin: 0 auto;
-                overflow: hidden;
-                border-radius: 10px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-
-            .carousel-inner {
-                width: 100%;
-                display: flex;
-                transition: transform 0.5s ease;
-            }
-
-            .carousel-item {
-                min-width: 100%;
-                height: auto;
-            }
-
-            .carousel-item img {
-                width: 100%;
-                height: auto;
-                object-fit: cover;
-            }
-
-            @media (max-width: 768px) {
-                .carousel {
-                    max-width: 100%;
-                }
-            }
-        </style>
     </style>
 </head>
 <body>
@@ -826,22 +786,22 @@
 
         <div class="social-links-container">
             <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"><i class="fab fa-tiktok"></i> 抖音</a>
-                <a href="#"><i class="fab fa-bilibili"></i> 哔哩哔哩</a>
+                <a href="https://github.com/snareli" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-tiktok"></i target="_blank"> 抖音</a>
+                <a href="https://space.bilibili.com/7646523" target="_blank"><i class="fab fa-bilibili"></i> 哔哩哔哩</a>
             </div>
         </div>
 
         <div class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/800/400" alt="测试图片">
+                    <img src="https://pic.imgdb.cn/item/6726355cd29ded1a8cbe7d36.jpg" alt="个人照片1">
                 </div>
                 <div class="carousel-item">
-                    <img src="photo2.jpg" alt="个人照片2">
+                    <img src="https://pic.imgdb.cn/item/6726373ad29ded1a8cc003e3.jpg" alt="个人照片2">
                 </div>
                 <div class="carousel-item"> 
-                    <img src="photo3.jpg" alt="个人照片3">
+                    <img src="https://pic.imgdb.cn/item/672638aad29ded1a8cc143f7.jpg" alt="个人照片3">
                 </div>
             </div>
             <div class="carousel-control carousel-prev">❮</div>
