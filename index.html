@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李烁琛的个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .social-links a {
+            margin-left: 1rem;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2rem;
+        }
+
+        /* 照片轮播 */
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        /* 个人信息部分 */
+        .section {
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-content {
+            padding: 1rem 0;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* 底部样式 */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 2%;
+            }
+
+            .main-content {
+                padding: 1rem 2%;
+            }
+
+            .welcome {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* 添加新的社交链接样式 */
+        .social-links-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .social-links {
+            display: inline-flex;
+            gap: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .social-links i {
+            font-size: 1.3rem;
+        }
+
+        /* 响应式设计补充 */
+        @media (max-width: 768px) {
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* 在现有样式中添加个人信息相关样式 */
+        .personal-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+        }
+
+        .info-label {
+            font-weight: bold;
+            margin-right: 1rem;
+            min-width: 60px;
+            color: #555;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .personal-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 在现有样式中添加教育背景相关样式 */
+        .education {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .edu-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .edu-date {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .edu-school {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .edu-major {
+            color: #444;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .edu-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .edu-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .edu-list strong {
+            color: #555;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .edu-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* 在现有样式中添加实习经验相关样式 */
+        .experience {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exp-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .exp-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-date {
+            color: #666;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-title {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .exp-company {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .exp-position {
+            color: #444;
+            font-weight: 500;
+        }
+
+        .exp-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .exp-point {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .exp-point strong {
+            color: #555;
+        }
+
+        .exp-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .exp-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .exp-title {
+                gap: 0.5rem;
+            }
+        }
+
+        /* 在现有样式中添加项目经历相关样式 */
+        .project-experience {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .project-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-date {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-point {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .project-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .project-list strong {
+            color: #555;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* 在现有样式中添加技能掌握相关样式 */
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* 在现有样式中添加荣誉证书相关样式 */
+        .certificate-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .certificate-item {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* 竞赛经历相关样式 */
+        .competition {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .competition-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .competition-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border-left: 3px solid #007bff;
+            background-color: white;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .competition-date {
+            color: #666;
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .competition-name {
+            font-weight: bold;
+            color: #333;
+            margin-right: 1rem;
+        }
+
+        .competition-award {
+            color: #007bff;
+            font-weight: 500;
+        }
+
+        .competition-org {
+            color: #666;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .competition-item {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+
+        /* 技能掌握部分分类展示 */
+        .skills {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .skill-category-title {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .skill-category-content {
+            margin-bottom: 1rem;
+        }
+
+        .skill-category-content:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .skill-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .skill-detail {
+                gap: 0.3rem;
+            }
+            
+            .skill-tag {
+                font-size: 0.85rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+
+        /* 在现有样式中添加荣誉证书相关样式 */
+        .certificate-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .certificate-item {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* 竞赛经历相关样式 */
+        .competition {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .competition-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .competition-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border-left: 3px solid #007bff;
+            background-color: white;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .competition-date {
+            color: #666;
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .competition-name {
+            font-weight: bold;
+            color: #333;
+            margin-right: 1rem;
+        }
+
+        .competition-award {
+            color: #007bff;
+            font-weight: 500;
+        }
+
+        .competition-org {
+            color: #666;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .competition-item {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+
+        /* 技能掌握部分分类展示 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skill-category-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-category-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .skill-description {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* 更新荣誉证书样式 */
+        .certificate {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .certificate-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .certificate-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .certificate-item i {
+            color: #ffd700;
+        }
+
+        /* 自我评价样式 */
+        .self-evaluation {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .evaluation-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .evaluation-content p {
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .certificate-list {
+                flex-direction: column;
+            }
+            
+            .certificate-item {
+                width: 100%;
+            }
+        }
+
+        /* 更新照片轮播部分 */
+        .section {
+            <h2 class="section-title">个人照片</h2>
+            <div class="section-content">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/800/400" alt="测试图片">
+                        </div>
+                        <!-- 如果有更多照片，可以继续添加 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+        /* 添加对应的样式 */
+        <style>
+            .carousel {
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto;
+                overflow: hidden;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .carousel-inner {
+                width: 100%;
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+
+            .carousel-item {
+                min-width: 100%;
+                height: auto;
+            }
+
+            .carousel-item img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            @media (max-width: 768px) {
+                .carousel {
+                    max-width: 100%;
+                }
+            }
+        </style>
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">李烁琛</div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <h1 class="welcome">欢迎来到李烁琛的个人主页</h1>
+
+        <div class="social-links-container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-tiktok"></i> 抖音</a>
+                <a href="#"><i class="fab fa-bilibili"></i> 哔哩哔哩</a>
+            </div>
+        </div>
+
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/800/400" alt="测试图片">
+                </div>
+                <div class="carousel-item">
+                    <img src="photo2.jpg" alt="个人照片2">
+                </div>
+                <div class="carousel-item"> 
+                    <img src="photo3.jpg" alt="个人照片3">
+                </div>
+            </div>
+            <div class="carousel-control carousel-prev">❮</div>
+            <div class="carousel-control carousel-next">❯</div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">个人信息</h2>
+            <div class="section-content personal-info">
+                <div class="info-item">
+                    <span class="info-label">电话:</span>
+                    <span class="info-value">13717683259</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">性别:</span>
+                    <span class="info-value">男</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">户籍:</span>
+                    <span class="info-value">北京</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">邮箱:</span>
+                    <span class="info-value">1320616682@qq.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">年龄:</span>
+                    <span class="info-value">25</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">身高:</span>
+                    <span class="info-value">183cm</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">教育背景</h2>
+            <div class="section-content education">
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <span class="edu-date">2022.09 - 2025.06</span>
+                        <span class="edu-school">江苏师范大学</span>
+                    </div>
+                    <div class="edu-details">
+                        <p class="edu-major">管理科学与工程(计算机科学与技术学院) · 学术型硕士</p>
+                        <ul class="edu-list">
+                            <li><strong>研究方向:</strong> 机器学习、故障诊断</li>
+                            <li><strong>GPA:</strong> 3.58/4 (专业第一)</li>
+                            <li><strong>论文:</strong> 《基于语义增强型深度自动编码器的零样本故障诊断方法》(一作)被江苏省人工智能学术会议录用</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <span class="edu-date">2017.09 - 2021.07</span>
+                        <span class="edu-school">中国民航大学</span>
+                    </div>
+                    <div class="edu-details">
+                        <p class="edu-major">公共事业管理(经济与管理学院) · 本科</p>
+                        <ul class="edu-list">
+                            <li><strong>GPA:</strong> 3.45/4 (Top50%)</li>
+                            <li><strong>本科毕业论文:</strong> 《基于层次分析法的本科生就业能力评价》</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">实习经验</h2>
+            <div class="section-content experience">
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-date">2024.09 - 至今</span>
+                        <div class="exp-title">
+                            <span class="exp-company">盛凡知识产权(徐州)</span>
+                            <span class="exp-position">AI应用工程师(短剧翻译)实习生</span>
+                        </div>
+                    </div>
+                    <div class="exp-details">
+                        <div class="exp-point">
+                            <strong>背景:</strong> 
+                            <p>利用AI技术实现短视频剧集出海一站式解决方案</p>
+                        </div>
+                        <div class="exp-point">
+                            <strong>任务:</strong> 
+                            <p>整合AI技术，改进现有解决方案，实现字幕提取、翻译、处理的自动化流程，以显著提升工作效率</p>
+                        </div>
+                        <div class="exp-point">
+                            <strong>行动:</strong>
+                            <ul class="exp-list">
+                                <li>研究并应用开源项目: video-subtitle-remove/extract(字幕提取与消除)、Whisper(语音识别)、GPT/claude/geimni API(字幕翻译)、sovits(音色克隆)，构建视频处理的自动化流程</li>
+                                <li>独立用Python开发批量字幕压制工具、基于大模型API的翻译工具、文字表格处理工具，优化工作流程</li>
+                                <li>整合自研工具与开源技术，对原解决方案进行颠覆性改进</li>
+                                <li>制定短剧平台数据分析埋点方案</li>
+                            </ul>
+                        </div>
+                        <div class="exp-point">
+                            <strong>结果:</strong>
+                            <p>通过技术整合与流程优化，项目组工作效率提升10倍以上，大幅减少了人工干预，提升了字幕翻译和视频处理速度与准确性</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-date">2019.07 - 2019.08</span>
+                        <div class="exp-title">
+                            <span class="exp-company">北京维恩咨询有限公司</span>
+                            <span class="exp-position">数据分析实习生</span>
+                        </div>
+                    </div>
+                    <div class="exp-details">
+                        <div class="exp-point">
+                            <strong>背景:</strong>
+                            <p>公司凭借先进大数据技术和行业经验，为客户提供网络零售监测与研究解决方案</p>
+                        </div>
+                        <div class="exp-point">
+                            <strong>任务:</strong>
+                            <p>负责对电商网站商品进行数据标注及分析，同时参与系统问题反馈和数据库培训学习</p>
+                        </div>
+                        <div class="exp-point">
+                            <strong>行动:</strong>
+                            <ul class="exp-list">
+                                <li>数据标注: 使用公司系统对天猫、京东等电商商品标注品牌和品类</li>
+                                <li>数据分析: 用python对标注产品分类汇总、筛选统计，制作整理含电商品牌信息的Excel表格</li>
+                                <li>其他: 发现系统bug并反馈技术部，参与SQL Server数据库培训学习SQL语言应用</li>
+                            </ul>
+                        </div>
+                        <div class="exp-point">
+                            <strong>结果:</strong>
+                            <p>数据处理效率在同期实习生中领先</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">项目经历</h2>
+            <div class="section-content project-experience">
+                <div class="project-item">
+                    <div class="project-header">
+                        <span class="project-date">2023.06 - 2023.08</span>
+                        <span class="project-title">基于AI智能的肺癌全息诊断预测系统</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-point">
+                            <strong>简介:</strong>
+                            <p>"鹰眼"识癌项目是一款基于人工智能技术的肺癌诊断预测系统，旨在通过分析mRNA表达谱数据，为患者提供个性化的诊断报告和治疗建议。该系统结合了多维度智能预测、医学专业知识构建的AI模型、相似患者药品推荐算法等创新技术，通过可视化工具直观展示肺癌风险和病理特征，以提高诊断的准确性和治疗的有效性。项目通过整合先进的生物信息技术和大数据分析，致力于推动肺癌早期筛查和个性化医疗的发展。</p>
+                        </div>
+                        <div class="project-point">
+                            <strong>职责:</strong>
+                            <p>作为队内算法工程师，负责数据处理、特征选取、模型设计工作。在多个维度设计了多个评判癌症指标的AI型，原创基于相似患者的药品推荐算法。系统结合大语言模型和数据可视化，对每位病人生成个性化的诊断报告</p>
+                        </div>
+                        <div class="project-point">
+                            <strong>成果:</strong>
+                            <p>比赛成果获人工智能大赛全国三等奖，并被生物学院教授采用，作为教学案例</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <span class="project-date">2024.08 - 2024.09</span>
+                        <span class="project-title">数学建模暑假线上实习</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-point">
+                            <strong>单位:</strong>
+                            <p>中国国际科技促进会物联网工作委员会</p>
+                        </div>
+                        <div class="project-point">
+                            <strong>内容:</strong>
+                            <p>为期六周实习中，前四周自主学习与互动掌握知识并撰写资料框架图和大纲，后两周完成建模报告。独立完成《自然灾害预测与应急响应模型》数模报告，表现优异，获得推荐信、实习证明</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">竞赛经历</h2>
+            <div class="section-content competition">
+                <div class="competition-list">
+                    <div class="competition-item">
+                        <span class="competition-date">2024</span>
+                        <span class="competition-name">蓝桥杯算法大赛</span>
+                        <span class="competition-award">江苏赛区Python研究生组二等奖</span>
+                    </div>
+                    <div class="competition-item">
+                        <span class="competition-date">2023</span>
+                        <span class="competition-name">中国研究生人工智能创新大赛</span>
+                        <span class="competition-award">三等奖</span>
+                        <span class="competition-org">(中国学位与研究生教育协会)</span>
+                    </div>
+                    <div class="competition-item">
+                        <span class="competition-date">2023</span>
+                        <span class="competition-name">全国大学生数据分析科普知识竞赛</span>
+                        <span class="competition-award">一等奖</span>
+                        <span class="competition-org">(中国现场统计研究会、中国国际科技促进会物联网工作委员会)</span>
+                    </div>
+                    <div class="competition-item">
+                        <span class="competition-date">2024</span>
+                        <span class="competition-name">全国高校计算机技能竞赛大数据赛道</span>
+                        <span class="competition-award">二等奖</span>
+                        <span class="competition-org">(国际(澳)学术研究院人工智能研究所)</span>
+                    </div>
+                    <div class="competition-item">
+                        <span class="competition-date">2023</span>
+                        <span class="competition-name">大学生信息系统创新大赛--Python编程挑战赛</span>
+                        <span class="competition-award">二等奖</span>
+                        <span class="competition-org">(湖北省计算机信息系统集成协会)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">技能掌握</h2>
+            <div class="section-content skills">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">AI & 机器学习</h3>
+                    <div class="skill-category-content">
+                        <div class="skill-detail">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                        </div>
+                        <p class="skill-description">掌握Python基础语法，熟练使用数据科学相关库，熟练掌握经典机器学习算法</p>
+                    </div>
+                    <div class="skill-category-content">
+                        <div class="skill-detail">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Keras</span>
+                        </div>
+                        <p class="skill-description">深入理解常用神经网络结构(AE, VAE, GAN, CNN, Transformer等)，熟练使用深度学习框架</p>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">数据分析 & 设计工具</h3>
+                    <div class="skill-category-content">
+                        <div class="skill-detail">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">SPSS</span>
+                            <span class="skill-tag">Axure</span>
+                            <span class="skill-tag">Visio</span>
+                        </div>
+                        <p class="skill-description">掌握数据分析工具，熟练使用产品设计软件</p>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Web开发</h3>
+                    <div class="skill-category-content">
+                        <div class="skill-detail">
+                            <span class="skill-tag">Vue3</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                        <p class="skill-description">能够理解前端代码，曾参与建立ChatGPT国内镜像站，负责前端开发</p>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">AIGC</h3>
+                    <div class="skill-category-content">
+                        <div class="skill-detail">
+                            <span class="skill-tag">ChatGPT</span>
+                            <span class="skill-tag">Stable Diffusion</span>
+                            <span class="skill-tag">Midjourney</span>
+                        </div>
+                        <p class="skill-description">丰富的AIGC产品使用和API调用经验，包括语言、图片、视频、音频生成</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">荣誉证书</h2>
+            <div class="section-content certificate">
+                <div class="certificate-list">
+                    <div class="certificate-item">
+                        <i class="fas fa-award"></i>
+                        <span>大学英语六级</span>
+                    </div>
+                    <div class="certificate-item">
+                        <i class="fas fa-award"></i>
+                        <span>全国计算机等级二级</span>
+                    </div>
+                    <div class="certificate-item">
+                        <i class="fas fa-award"></i>
+                        <span>普通话二级甲等</span>
+                    </div>
+                    <div class="certificate-item">
+                        <i class="fas fa-award"></i>
+                        <span>研究生一等学业奖学金</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">自我评价</h2>
+            <div class="section-content self-evaluation">
+                <div class="evaluation-content">
+                    <p>管理科学与工程专业学术型硕士，研究方向为人工智能，GPA专业第一。具备扎实专业知识，熟练掌握Python、SQL等工具及多种机器学习算法和框架，拥有丰富的数据处理和建模经验。</p>
+                    <p>曾获多项国家级竞赛奖项。实习和项目经历展现出较强技术能力与团队协作精神，能整合技术改进方案，推动项目进展。</p>
+                    <p>性格INTJ，结合人工智能与管理学专业背景，具备多视角思维方式和决策能力，善于从宏观角度分析问题，注重逻辑和理性。同时具有音乐特长，精通演奏打击乐。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <p>电话：+86 xxx xxxx xxxx</p>
+                <p>邮箱：example@email.com</p>
+            </div>
+            <div class="copyright">
+                © 2024 李烁琛. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 照片轮播功能
+        const carousel = document.querySelector('.carousel-inner');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        }
+
+        // 自动轮播
+        setInterval(nextSlide, 5000);
+
+        // 按钮点击事件
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+    </script>
+</body>
+</html> 
