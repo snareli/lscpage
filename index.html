@@ -806,6 +806,16 @@
                 <div class="carousel-item"> 
                     <img src="https://pic.imgdb.cn/item/672638aad29ded1a8cc143f7.jpg" alt="个人照片3">
                 </div>
+                <div class="carousel-item">
+                    <img src="https://pic.imgdb.cn/item/672b1a2fd29ded1a8cb01a4a.jpg" alt="个人照片4">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pic.imgdb.cn/item/672b1a34d29ded1a8cb022af.jpg" alt="个人照片5">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pic.imgdb.cn/item/672b1a3ad29ded1a8cb028e4.jpg" alt="个人照片6">
+                </div>
+
             </div>
             <div class="carousel-control carousel-prev">❮</div>
             <div class="carousel-control carousel-next">❯</div>
@@ -1019,6 +1029,12 @@
                         <span class="competition-org">(国际(澳门)学术研究院人工智能研究所)</span>
                     </div>
                     <div class="competition-item">
+                        <span class="competition-date">2024</span>
+                        <span class="competition-name">大学生信息系统创新大赛——Python编程巅峰赛初赛</span>
+                        <span class="competition-award">一等奖</span>
+                        <span class="competition-org">（湖北省计算机信息系统集成协会）</span>
+                    </div>
+                    <div class="competition-item">
                         <span class="competition-date">2023</span>
                         <span class="competition-name">大学生信息系统创新大赛--Python编程挑战赛</span>
                         <span class="competition-award">二等奖</span>
@@ -1144,11 +1160,26 @@
     </footer>
 
     <script>
-        // 照片轮播功能
+        // 获取轮播图元素
         const carousel = document.querySelector('.carousel-inner');
-        const items = document.querySelectorAll('.carousel-item');
+        const items = Array.from(document.querySelectorAll('.carousel-item'));
         const prevBtn = document.querySelector('.carousel-prev');
         const nextBtn = document.querySelector('.carousel-next');
+        
+        // 随机打乱轮播图顺序
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        
+        // 重新排列轮播图
+        const shuffledItems = shuffleArray(items);
+        shuffledItems.forEach(item => carousel.appendChild(item));
+        
+        // 轮播逻辑
         let currentIndex = 0;
 
         function updateCarousel() {
